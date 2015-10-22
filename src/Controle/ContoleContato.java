@@ -33,10 +33,37 @@ public class ContoleContato {
             
             result = true;
         }
-        
+        return result;
+      
     }
 
-
+    public boolean atualizarContato(ContatoDTO c){
+        
+        boolean result = false;
+        ContatoDAO contatoDAO =new ContatoDAO();
+        if (c != null && c.getNomeContato().length() > 0
+                && c.getEnderecoContato().length() > 0
+                && c.getEmailContato().length() > 0
+                && c.getTelefoneContato().length() > 0){
+            
+            //SETA CODIGO VALIDO
+            contatoDAO.atualizar(c);
+            
+            System.out.println(c.toString());
+            
+            result = true;
+        } return result;
+    }    
+    public boolean excluirContato(int idAg){
+        boolean result = false;
+        
+            ContatoDAO contato = new ContatoDAO();
+            contato.remover(idAg);
+            result = true;
+            
+            return result;
+    }    
+    
 
 
 
