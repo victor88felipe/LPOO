@@ -6,71 +6,63 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContoleContato {
-    
+
     public List<ContatoDTO> loadContatos(String nome) {
-        
-        ContatoDAO contatoDAO =  new ContatoDAO();
-        
+
+        ContatoDAO contatoDAO = new ContatoDAO();
+
         List<ContatoDTO> listaContato = new ArrayList<>();
         listaContato = contatoDAO.listarBusca(nome);
-        
-        return listaContato;
-            }
 
-    public boolean cadastrarContato(ContatoDTO c, int codigo){
-        
+        return listaContato;
+    }
+
+    public boolean cadastrarContato(ContatoDTO c, int codigo) {
+
         boolean result = false;
         ContatoDAO contatoDAO = new ContatoDAO();
         if (c != null && c.getNomeContato().length() > 0
                 && c.getEnderecoContato().length() > 0
                 && c.getEmailContato().length() > 0
-                && c.getTelefoneContato().length() > 0){
-            
+                && c.getTelefoneContato().length() > 0) {
+
             // SETA CODIGO VALIDO
             contatoDAO.inserir(c, codigo);
-            
+
             System.out.println(c.toString());
-            
+
             result = true;
         }
         return result;
-      
+
     }
 
-    public boolean atualizarContato(ContatoDTO c){
-        
+    public boolean atualizarContato(ContatoDTO c) {
+
         boolean result = false;
-        ContatoDAO contatoDAO =new ContatoDAO();
+        ContatoDAO contatoDAO = new ContatoDAO();
         if (c != null && c.getNomeContato().length() > 0
                 && c.getEnderecoContato().length() > 0
                 && c.getEmailContato().length() > 0
-                && c.getTelefoneContato().length() > 0){
-            
+                && c.getTelefoneContato().length() > 0) {
+
             //SETA CODIGO VALIDO
             contatoDAO.atualizar(c);
-            
+
             System.out.println(c.toString());
-            
+
             result = true;
-        } return result;
-    }    
-    public boolean excluirContato(int idAg){
+        }
+        return result;
+    }
+
+    public boolean excluirContato(int idAg) {
         boolean result = false;
-        
-            ContatoDAO contato = new ContatoDAO();
-            contato.remover(idAg);
-            result = true;
-            
-            return result;
-    }    
-    
 
+        ContatoDAO contato = new ContatoDAO();
+        contato.remover(idAg);
+        result = true;
 
-
-
-
-
-
-
+        return result;
+    }
 }
-
